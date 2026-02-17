@@ -1,759 +1,401 @@
 <script lang="ts">
   import Navbar from '$lib/Navbar.svelte';
   import Footer from '$lib/Footer.svelte';
-  import Button from '$lib/Button.svelte';
+
+  let activeTab = $state('moscow');
+
+  const pricing = [
+    { sessions: 1, price: 1400, perSession: 1400, validity: '30 days' },
+    { sessions: 5, price: 6500, perSession: 1300, validity: '45 days' },
+    { sessions: 10, price: 12000, perSession: 1200, validity: '90 days' },
+    { sessions: 20, price: 22000, perSession: 1100, validity: '180 days' }
+  ];
+
+  const instructors = [
+    { name: 'Andrey', role: 'Lead Motivator' },
+    { name: 'Anna', role: 'Rhythm Expert' },
+    { name: 'Valentin', role: 'Energy Coach' },
+    { name: 'Vova', role: 'Beat Master' },
+    { name: 'Danil', role: 'Power Specialist' },
+    { name: 'Darya', role: 'Flow Instructor' }
+  ];
 </script>
 
-<div class="min-h-screen font-sans text-dark bg-cream overflow-x-hidden">
+<div class="min-h-screen font-sans text-white bg-[#130b29] overflow-x-hidden relative">
   <Navbar />
 
-  <!-- Hero Section -->
-  <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-    <div class="mb-6">
-      <span class="text-xs font-bold tracking-widest text-gray-500 uppercase">The #1 Creator Marketing Platform</span>
-    </div>
-    <h1 class="text-5xl md:text-7xl font-serif mb-6 leading-tight">
-      Where B2B brands scale <br class="hidden md:block" /> influencer marketing
-    </h1>
-    <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-      The fastest and easiest way to do influencer marketing at scale.
-      Find the right creators on all platforms, book, collaborate, and pay – all in one place.
-    </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-      <Button href="#" type="primary">Get access &rarr;</Button>
-      <Button href="#" type="outline">Talk to us</Button>
-    </div>
+  <!-- Hero Section (Recreated from Reference) -->
+  <header class="relative min-h-screen flex flex-col items-center justify-center pt-16 pb-32 px-4 w-full max-w-7xl mx-auto overflow-hidden">
+    <!-- Background Effects -->
+    <div class="fixed inset-0 bg-stars opacity-40 pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-gradient-overlay pointer-events-none z-0"></div>
 
-    <!-- Hero Image Placeholder -->
-    <div class="relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white aspect-[16/9] mb-16 group">
-      <!-- Mock UI -->
-      <div class="absolute inset-0 bg-gray-50 p-4">
-        <div class="h-full w-full bg-white rounded-xl border border-gray-200 shadow-sm p-6 flex flex-col">
-            <!-- Header of Mock UI -->
-            <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-orange-100"></div>
-                    <div class="h-4 w-32 bg-gray-100 rounded"></div>
-                </div>
-                <div class="flex gap-2">
-                    <div class="h-8 w-20 bg-gray-100 rounded"></div>
-                    <div class="h-8 w-20 bg-gray-100 rounded"></div>
-                </div>
-            </div>
-            <!-- Content of Mock UI -->
-            <div class="flex-1 grid grid-cols-12 gap-6">
-                <div class="col-span-3 space-y-3">
-                    <div class="h-4 w-full bg-gray-100 rounded"></div>
-                    <div class="h-4 w-3/4 bg-gray-100 rounded"></div>
-                    <div class="h-4 w-5/6 bg-gray-100 rounded"></div>
-                </div>
-                <div class="col-span-9 bg-gray-50 rounded-lg p-4 grid grid-cols-2 gap-4">
-                     <div class="bg-white p-4 rounded shadow-sm h-32"></div>
-                     <div class="bg-white p-4 rounded shadow-sm h-32"></div>
-                     <div class="bg-white p-4 rounded shadow-sm h-32"></div>
-                     <div class="bg-white p-4 rounded shadow-sm h-32"></div>
-                </div>
-            </div>
-        </div>
-      </div>
-      
-      <!-- Decorative Elements -->
-      <div class="absolute -left-12 bottom-12 w-24 h-24 bg-orange-brand rounded-full blur-2xl opacity-20"></div>
-      <div class="absolute -right-12 top-12 w-32 h-32 bg-purple-400 rounded-full blur-2xl opacity-20"></div>
+    <!-- Main Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center w-full">
+        <!-- Headline -->
+        <h1 class="text-balance text-5xl md:text-6xl lg:text-7xl font-serif text-center text-white mb-6 leading-[1.1] tracking-tight max-w-5xl animate-fade-in-up delay-100">
+            The Rhythm of Your City: Synchronized Cycling
+        </h1>
 
-      <!-- Cartoon Character (Orange Blob) -->
-      <div class="absolute bottom-[-20px] left-[-40px] w-32 h-32 z-10 hidden md:block">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 90C75 90 90 70 90 50C90 30 70 10 50 10C30 10 10 30 10 50C10 70 25 90 50 90Z" fill="#FF5D2A"/>
-            <circle cx="35" cy="40" r="5" fill="white"/>
-            <circle cx="65" cy="40" r="5" fill="white"/>
-            <path d="M35 60 Q50 70 65 60" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <!-- Arms -->
-            <path d="M10 50 Q-5 30 15 20" stroke="#FF5D2A" stroke-width="8" stroke-linecap="round"/>
-          </svg>
-      </div>
-    </div>
+        <!-- Subheadline -->
+        <p class="text-pretty text-lg md:text-xl text-gray-300 text-center max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200">
+            Experience high-intensity 45-minute cardio sessions driven by the music. Break the isolation of boring gyms with our boutique full-body workouts in Moscow and St. Petersburg.
+        </p>
 
-    <!-- Logos -->
-    <div class="text-center">
-      <p class="text-sm text-gray-500 mb-6">Powering thousands of marketing teams at the fastest growing companies in tech</p>
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-        <!-- Linktree -->
-        <span class="font-bold text-xl flex items-center gap-2"><div class="w-5 h-5 bg-green-600 rounded-full"></div> Linktree</span>
-        <!-- Raycast -->
-        <span class="font-bold text-xl flex items-center gap-2"><div class="w-5 h-5 bg-red-500 rounded"></div> Raycast</span>
-        <!-- Gamma -->
-        <span class="font-bold text-xl flex items-center gap-2"><div class="w-5 h-5 bg-yellow-500 rounded-tr-xl"></div> Gamma</span>
-        <!-- Superhuman -->
-        <span class="font-bold text-xl flex items-center gap-2"><div class="w-5 h-5 bg-purple-600 rounded-full"></div> Superhuman</span>
-        <!-- Framer -->
-        <span class="font-bold text-xl flex items-center gap-2"><div class="w-5 h-5 bg-black rounded-tl-xl"></div> Framer</span>
-        <!-- Rippling -->
-        <span class="font-bold text-xl flex items-center gap-2"><div class="w-5 h-5 bg-yellow-400 rounded-full"></div> Rippling</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-16 max-w-3xl mx-auto">
-        Get direct access to the top B2B creators in the world - on all platforms
-      </h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <div class="bg-gray-50 p-8 rounded-2xl text-center">
-          <div class="text-4xl font-serif font-medium mb-2">300 Million</div>
-          <div class="text-xs font-bold text-gray-400 tracking-widest uppercase">Target Audience</div>
-        </div>
-        <div class="bg-gray-50 p-8 rounded-2xl text-center">
-          <div class="text-4xl font-serif font-medium mb-2">2 Billion</div>
-          <div class="text-xs font-bold text-gray-400 tracking-widest uppercase">Monthly Impressions</div>
-        </div>
-        <div class="bg-gray-50 p-8 rounded-2xl text-center">
-          <div class="text-4xl font-serif font-medium mb-2">60%</div>
-          <div class="text-xs font-bold text-gray-400 tracking-widest uppercase">Lower CPC than LinkedIn Ads*</div>
-        </div>
-      </div>
-
-      <!-- Creator Cards Carousel Mockup -->
-      <div class="flex gap-4 overflow-hidden relative">
-        <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
-        
-        <div class="flex gap-4 animate-scroll">
-            <!-- Card 1 -->
-            <div class="w-64 h-80 bg-pink-100 rounded-2xl flex-shrink-0 relative overflow-hidden group">
-                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                    <div class="w-2 h-2 bg-pink-500 rounded-full"></div> TikTok
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 mb-20 animate-fade-in-up delay-300">
+            <a href="#booking" class="bg-white text-black font-medium rounded-full px-8 py-3.5 hover:bg-gray-100 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                Book a Class
+            </a>
+            <a href="#classes" class="group flex items-center gap-3 bg-[#1e1633] text-white border border-white/20 rounded-full px-6 py-3.5 hover:bg-[#2a1f45] transition-colors">
+                <span>Explore Classes</span>
+                <div class="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+                    <svg class="w-2.5 h-2.5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
-                    <div class="font-bold">Tech Daily</div>
-                    <div class="text-xs opacity-80">500k Followers</div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="w-64 h-80 bg-orange-100 rounded-2xl flex-shrink-0 relative overflow-hidden group">
-                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div> Newsletter
-                </div>
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
-                    <div class="font-bold">The Hustle</div>
-                    <div class="text-xs opacity-80">2M Subscribers</div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="w-64 h-80 bg-red-100 rounded-2xl flex-shrink-0 relative overflow-hidden group">
-                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                    <div class="w-2 h-2 bg-red-500 rounded-full"></div> YouTube
-                </div>
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
-                    <div class="font-bold">MKBHD</div>
-                    <div class="text-xs opacity-80">18M Subscribers</div>
-                </div>
-            </div>
-             <!-- Card 4 -->
-            <div class="w-64 h-80 bg-blue-100 rounded-2xl flex-shrink-0 relative overflow-hidden group">
-                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div> LinkedIn
-                </div>
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
-                    <div class="font-bold">Sahil Bloom</div>
-                    <div class="text-xs opacity-80">1M Followers</div>
-                </div>
-            </div>
-             <!-- Card 5 -->
-            <div class="w-64 h-80 bg-purple-100 rounded-2xl flex-shrink-0 relative overflow-hidden group">
-                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div> Podcast
-                </div>
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
-                    <div class="font-bold">My First Million</div>
-                    <div class="text-xs opacity-80">100k Downloads</div>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Disrupted Section -->
-  <section class="bg-dark text-white py-24 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-4">Traditional marketing is <br /> being disrupted</h2>
-      <p class="text-center text-gray-400 mb-16">We're entering a new era of personality-led growth.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <!-- The Old Way -->
-        <div>
-          <h3 class="text-xl font-serif mb-2">The Old Way</h3>
-          <p class="text-gray-400 text-sm mb-8 leading-relaxed">
-            Marketers try to build their brand through paid search, outbound, and SEO - but the channels have become crowded and expensive.
-          </p>
-          <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 relative">
-             <div class="flex justify-between items-end h-40 gap-2">
-                <div class="w-full bg-red-500/20 rounded-t h-[40%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-red-400">$20</div></div>
-                <div class="w-full bg-red-500/40 rounded-t h-[60%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-red-400">$45</div></div>
-                <div class="w-full bg-red-500/60 rounded-t h-[80%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-red-400">$80</div></div>
-                <div class="w-full bg-red-500/80 rounded-t h-[90%] relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-red-400">$120</div></div>
-                <div class="w-full bg-red-500 rounded-t h-full relative group"><div class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-red-400 font-bold">$150</div></div>
-             </div>
-             <div class="mt-4 flex justify-between text-xs text-gray-500">
-                <span>2014</span>
-                <span>2024</span>
-             </div>
-             <div class="absolute top-4 left-4 text-xs font-bold text-gray-300">CAC (Customer Acquisition Cost)</div>
-          </div>
+            </a>
         </div>
 
-        <!-- The New Way -->
-        <div>
-          <h3 class="text-xl font-serif mb-2">The New Way</h3>
-          <p class="text-gray-400 text-sm mb-8 leading-relaxed">
-            Hyper-scale your brand and top-of-funnel growth through trusted creator audiences. Cut through the noise and build quality inbound.
-          </p>
-          <div class="relative h-64 flex items-center justify-center">
-             <!-- Central Character -->
-             <div class="relative z-10 w-24 h-24">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 90C75 90 90 70 90 50C90 30 70 10 50 10C30 10 10 30 10 50C10 70 25 90 50 90Z" fill="#FF5D2A"/>
-                    <circle cx="35" cy="40" r="5" fill="white"/>
-                    <circle cx="65" cy="40" r="5" fill="white"/>
-                    <path d="M35 60 Q50 70 65 60" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-             </div>
-             <!-- Orbiting Icons -->
-             <div class="absolute inset-0 animate-spin-slow">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">Li</div>
-                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4 w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white text-xs">Ig</div>
-                <div class="absolute left-0 top-1/2 -translate-x-4 -translate-y-1/2 w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">Yt</div>
-                <div class="absolute right-0 top-1/2 translate-x-4 -translate-y-1/2 w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-xs">X</div>
-             </div>
-             <!-- Megaphone Effect -->
-             <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 opacity-50">
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                    <path d="M0 50 L100 20" stroke="#FF5D2A" stroke-width="2" stroke-dasharray="4 4"/>
-                    <path d="M0 50 L100 50" stroke="#FF5D2A" stroke-width="2" stroke-dasharray="4 4"/>
-                    <path d="M0 50 L100 80" stroke="#FF5D2A" stroke-width="2" stroke-dasharray="4 4"/>
-                </svg>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section 1 (Purple) -->
-  <section class="py-24 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-16 max-w-2xl mx-auto">
-        Find the best creators for your brand - fast.
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card 1: AI Search -->
-        <div class="lg:col-span-2 bg-white rounded-3xl p-8 shadow-sm border border-gray-100 overflow-hidden relative group">
-            <div class="mb-8">
-                <h3 class="text-xl font-serif mb-2">AI-powered creator search</h3>
-                <p class="text-gray-500 text-sm">Our AI lets you search all platforms - not just one. Simply search and find the right creator ambassadors for your business in minutes.</p>
-            </div>
-            <div class="bg-purple-50 rounded-xl p-6 h-64 relative border border-purple-100">
-                <!-- Mock Search Bar -->
-                <div class="bg-white rounded-full p-2 shadow-sm flex items-center gap-2 mb-4 w-3/4 mx-auto">
-                    <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">✨</div>
-                    <div class="text-sm text-gray-400">Tech & Startups</div>
-                    <div class="ml-auto bg-black text-white px-4 py-1.5 rounded-full text-xs font-bold">Search</div>
-                </div>
-                <!-- Results Mockup -->
-                <div class="flex gap-4 justify-center">
-                    <div class="bg-white p-3 rounded-xl shadow-sm w-32">
-                        <div class="w-8 h-8 bg-gray-200 rounded-full mb-2"></div>
-                        <div class="h-2 w-16 bg-gray-100 rounded mb-1"></div>
-                        <div class="h-2 w-10 bg-gray-100 rounded"></div>
-                    </div>
-                    <div class="bg-white p-3 rounded-xl shadow-sm w-32">
-                        <div class="w-8 h-8 bg-gray-200 rounded-full mb-2"></div>
-                        <div class="h-2 w-16 bg-gray-100 rounded mb-1"></div>
-                        <div class="h-2 w-10 bg-gray-100 rounded"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 2: Network -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 overflow-hidden">
-            <div class="mb-8">
-                <h3 class="text-xl font-serif mb-2">World's largest B2B creator network</h3>
-                <p class="text-gray-500 text-sm">The largest selection of creators across Newsletters, LinkedIn, YouTube, Instagram, Twitter, and more.</p>
-            </div>
-            <div class="bg-purple-50 rounded-xl h-48 relative overflow-hidden flex items-center justify-center">
-                <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg')] bg-contain bg-no-repeat bg-center opacity-10"></div>
-                <div class="flex gap-2 flex-wrap justify-center p-4">
-                    <span class="bg-white px-2 py-1 rounded shadow-sm text-xs">Newsletter</span>
-                    <span class="bg-white px-2 py-1 rounded shadow-sm text-xs">YouTube</span>
-                    <span class="bg-white px-2 py-1 rounded shadow-sm text-xs">LinkedIn</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 3: Media Kits -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 overflow-hidden">
-             <div class="h-48 bg-purple-50 rounded-xl mb-6 p-4 relative">
-                <div class="bg-white rounded-xl shadow-sm p-4 h-full w-full relative transform rotate-[-2deg]">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
-                        <div>
-                            <div class="h-3 w-20 bg-gray-100 rounded mb-1"></div>
-                            <div class="h-2 w-12 bg-gray-100 rounded"></div>
+        <!-- UI Interface Visualization -->
+        <div class="relative w-full max-w-[900px] mx-auto animate-scale-in delay-400">
+            <!-- Floating Cards -->
+            <div class="absolute -top-24 left-0 md:-left-4 z-0 transform -rotate-6 animate-float" style="--rotation: -6deg; animation-delay: 0s;">
+                <div class="bg-white rounded-xl p-3 shadow-xl border border-gray-100 flex flex-col gap-1 w-48">
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 rounded-full bg-green-100 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                         </div>
+                        <span class="text-xs font-bold text-green-700">30 Bikes</span>
                     </div>
-                    <div class="flex gap-2 mt-4">
-                        <div class="h-16 w-1/3 bg-purple-100 rounded-lg"></div>
-                        <div class="h-16 w-1/3 bg-orange-100 rounded-lg"></div>
-                        <div class="h-16 w-1/3 bg-blue-100 rounded-lg"></div>
-                    </div>
-                </div>
-             </div>
-             <h3 class="text-xl font-serif mb-2">Creator media kits</h3>
-             <p class="text-gray-500 text-sm">Analyze creators with verified stats, past prices, rates, and much more.</p>
-        </div>
-
-        <!-- Card 4: Recommendations -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 overflow-hidden">
-             <div class="h-48 bg-purple-50 rounded-xl mb-6 p-4 flex items-center justify-center">
-                <div class="bg-white p-4 rounded-xl shadow-sm w-full max-w-[200px]">
-                    <div class="text-xs text-gray-400 mb-2">We need to reach our new AI video tool to growth experts...</div>
-                    <div class="flex justify-end">
-                        <div class="bg-black text-white text-xs px-3 py-1.5 rounded-lg">2.1k/M</div>
-                    </div>
-                </div>
-             </div>
-             <h3 class="text-xl font-serif mb-2">AI creator recommendations</h3>
-             <p class="text-gray-500 text-sm">Tell us your goals - and our AI will build a campaign for you in seconds.</p>
-        </div>
-
-        <!-- Card 5: Evaluate -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 overflow-hidden">
-             <div class="h-48 bg-purple-50 rounded-xl mb-6 p-4 flex items-center justify-center relative">
-                 <div class="bg-white p-4 rounded-xl shadow-sm w-full max-w-[220px] flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-gray-200"></div>
-                    <div class="flex-1">
-                        <div class="h-3 w-20 bg-gray-100 rounded mb-2"></div>
-                        <div class="h-2 w-full bg-gray-50 rounded"></div>
-                    </div>
-                    <div class="w-10 h-10 rounded-full border-4 border-green-400 flex items-center justify-center text-xs font-bold text-green-600">98</div>
-                 </div>
-             </div>
-             <h3 class="text-xl font-serif mb-2">Evaluate a creator in seconds</h3>
-             <p class="text-gray-500 text-sm">Our AI evaluates and summarizes their latest content - no more digging in their feeds.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonial 1 -->
-  <section class="py-16 bg-cream">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-        <div class="flex justify-center mb-8">
-            <div class="flex items-center gap-2 font-bold text-xl opacity-80">
-                <div class="w-6 h-6 bg-black rounded"></div> INTERCOM
-            </div>
-        </div>
-        <blockquote class="text-2xl md:text-3xl font-serif leading-relaxed mb-8">
-            "Partnering with creators through Passionfroot has been a game-changer for Intercom's Startup program. By collaborating with top newsletters, we've reached thousands of founders."
-        </blockquote>
-        <div class="flex items-center justify-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-gray-300"></div>
-            <div class="text-left">
-                <div class="font-bold text-sm">John Doe</div>
-                <div class="text-xs text-gray-500">Head of Partnerships at Intercom</div>
-            </div>
-        </div>
-    </div>
-  </section>
-
-  <!-- Features Section 2 (Blue) -->
-  <section class="py-24 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-16">
-        Build and run your <br /> campaign - at scale.
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-            <div class="bg-blue-50 rounded-xl h-64 mb-8 p-4 relative overflow-hidden">
-                <!-- Kanban Board Mockup -->
-                <div class="flex gap-4 h-full">
-                    <div class="w-1/3 bg-white/50 rounded-lg p-2 space-y-2">
-                        <div class="h-2 w-12 bg-blue-200 rounded"></div>
-                        <div class="bg-white p-2 rounded shadow-sm h-16"></div>
-                        <div class="bg-white p-2 rounded shadow-sm h-16"></div>
-                    </div>
-                    <div class="w-1/3 bg-white/50 rounded-lg p-2 space-y-2">
-                        <div class="h-2 w-12 bg-blue-200 rounded"></div>
-                         <div class="bg-white p-2 rounded shadow-sm h-16"></div>
-                    </div>
-                    <div class="w-1/3 bg-white/50 rounded-lg p-2 space-y-2">
-                        <div class="h-2 w-12 bg-blue-200 rounded"></div>
-                    </div>
+                    <div class="text-[10px] text-gray-500 pl-6">Max Capacity per Session</div>
                 </div>
             </div>
-            <h3 class="text-xl font-serif mb-2">Design and run your campaign</h3>
-            <p class="text-gray-500 text-sm">Build your perfect roster, then deploy and manage your creator campaign at scale from one integrated dash.</p>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-            <div class="bg-blue-50 rounded-xl h-64 mb-8 p-4 flex items-center justify-center">
-                 <div class="bg-white rounded-xl shadow-lg p-4 w-3/4">
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="h-3 w-20 bg-gray-200 rounded"></div>
-                        <div class="h-6 w-20 bg-blue-500 rounded text-white text-[10px] flex items-center justify-center">Apply now</div>
+            <div class="absolute -top-28 left-1/4 z-0 transform rotate-3 animate-float" style="--rotation: 3deg; animation-delay: 1s;">
+                <div class="bg-white rounded-xl p-3 shadow-xl border border-gray-100 flex flex-col gap-1 w-52">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        <span class="text-xs font-bold text-orange-600">Pro Instructors</span>
                     </div>
-                    <div class="space-y-2">
-                        <div class="h-2 w-full bg-gray-100 rounded"></div>
-                        <div class="h-2 w-5/6 bg-gray-100 rounded"></div>
-                    </div>
-                 </div>
+                    <div class="text-[10px] text-gray-500 pl-6">Music-Driven Methodology</div>
+                </div>
             </div>
-            <h3 class="text-xl font-serif mb-2">Publish your own live campaign</h3>
-            <p class="text-gray-500 text-sm">Tired of outreach? Publish your campaign with your creator requirements and let relevant creators apply and come to you!</p>
-        </div>
 
-        <!-- Card 3 -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-            <div class="bg-blue-50 rounded-xl h-64 mb-8 p-4 flex items-center justify-center">
-                <!-- Calendar Mockup -->
-                <div class="bg-white rounded-xl shadow-sm p-4 w-3/4">
-                    <div class="grid grid-cols-7 gap-2 mb-2">
-                        {#each Array(7) as _}
-                            <div class="h-4 w-full bg-gray-100 rounded"></div>
-                        {/each}
+            <div class="absolute -top-24 right-1/4 z-0 transform -rotate-2 animate-float" style="--rotation: -2deg; animation-delay: 2s;">
+                <div class="bg-white rounded-xl p-3 shadow-xl border border-gray-100 flex flex-col gap-1 w-52">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>
+                        <span class="text-xs font-bold text-blue-600">45 Minutes</span>
                     </div>
-                    <div class="grid grid-cols-7 gap-2">
-                        {#each Array(28) as _, i}
-                            <div class="h-6 w-full {i === 14 ? 'bg-blue-500' : 'bg-gray-50'} rounded text-[8px] flex items-center justify-center text-gray-400">
-                                {i === 14 ? 'Book' : ''}
+                    <div class="text-[10px] text-gray-500 pl-6">Full-body cardio blast</div>
+                </div>
+            </div>
+
+            <div class="absolute -top-20 right-0 md:-right-4 z-0 transform rotate-6 animate-float" style="--rotation: 6deg; animation-delay: 1.5s;">
+                <div class="bg-white rounded-xl p-3 shadow-xl border border-gray-100 flex flex-col gap-1 w-48">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                        <span class="text-xs font-bold text-emerald-600">Fadeeva Studio</span>
+                    </div>
+                    <div class="text-[10px] text-gray-500 pl-6">HQ: Ulitsa Fadeeva, 4a</div>
+                </div>
+            </div>
+
+            <!-- Main Input Box -->
+            <div class="relative z-20 bg-[#f8f9fa] rounded-2xl p-6 border-[3px] border-[#6ee7b7] glow-border w-full shadow-2xl">
+                <div class="flex flex-col gap-8">
+                    <div class="text-xl text-gray-800 font-medium">Ready for your next session at Ulitsa Fadeeva?</div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <button class="text-gray-400 hover:text-[#475569] transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-sm text-gray-500 shadow-sm">
+                                Choose Class
                             </div>
-                        {/each}
+                        </div>
+                        
+                        <button class="w-10 h-10 bg-[#333] rounded-full flex items-center justify-center hover:bg-black transition-colors shadow-lg">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                        </button>
                     </div>
                 </div>
             </div>
-            <h3 class="text-xl font-serif mb-2">Book ad slots directly</h3>
-            <p class="text-gray-500 text-sm">Skip the scheduling back-and-forth - book open slots directly in creators' calendars.</p>
-        </div>
 
-        <!-- Card 4 -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-            <div class="bg-blue-50 rounded-xl h-64 mb-8 p-4 flex items-center justify-center">
-                <!-- Chat Mockup -->
-                <div class="w-full max-w-sm space-y-3">
-                    <div class="flex gap-2">
-                        <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
-                        <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-xs text-gray-500 w-2/3">
-                            Hey! I'd love to work with you on this campaign.
-                        </div>
-                    </div>
-                    <div class="flex gap-2 flex-row-reverse">
-                        <div class="w-8 h-8 bg-blue-500 rounded-full"></div>
-                        <div class="bg-blue-500 text-white p-3 rounded-2xl rounded-tr-none shadow-sm text-xs w-2/3">
-                            Sounds great! Let's do it.
-                        </div>
-                    </div>
+            <!-- Bottom Tabs -->
+            <div class="flex justify-center gap-3 mt-6 relative z-10">
+                <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-sm text-gray-600 shadow-lg border border-white/20">
+                    Pick Studio
+                </div>
+                <div class="relative bg-[#d1fae5] px-4 py-2 rounded-full flex items-center gap-2 text-sm text-green-800 font-medium shadow-lg border border-green-200 cursor-pointer">
+                    Book Bike
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-sm text-gray-600 shadow-lg border border-white/20">
+                    See Stats
                 </div>
             </div>
-            <h3 class="text-xl font-serif mb-2">Scale your outreach and connect directly in-app</h3>
-            <p class="text-gray-500 text-sm">Passionfroot is not a database, it's the largest B2B creator network in the world. This means you can book all creators directly from your campaign. No more email outreach or ghosted DMs.</p>
+        </div>
+    </div>
+
+    <!-- Character Glow Effect -->
+    <div class="absolute bottom-0 right-0 z-20 w-[300px] md:w-[450px] pointer-events-none translate-y-10">
+        <div class="absolute bottom-0 right-0 w-full h-full bg-gradient-to-tl from-primary-500/40 via-purple-500/20 to-transparent rounded-full blur-3xl transform translate-y-1/4 translate-x-1/4"></div>
+    </div>
+  </header>
+
+  <!-- Atmosphere Section -->
+  <section id="atmosphere" class="py-24 bg-white text-[#130b29]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">A Dynamic Cardio Party on Stationary Bikes</h2>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Forget everything you know about boring gym workouts. At Velobeat, we pedal to the rhythm of inspiring music in a dimmed studio. It's an emotional reset and an energy boost that transforms your body and mind.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Music-Driven</h4>
+                <p class="text-gray-500 text-sm">Every pedal stroke is synchronized with the beat for maximum cohesion.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Full-Body Workout</h4>
+                <p class="text-gray-500 text-sm">High-intensity cardio that engages your core and upper body without joint stress.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="/generated/image-a-high-energy-indoor-cycling-class-in-a--1771353860439-0.webp" alt="Cycling Atmosphere" class="rounded-3xl shadow-2xl" />
+          <div class="absolute -bottom-6 -left-6 bg-primary-500 text-white p-6 rounded-2xl shadow-xl hidden md:block">
+            <div class="text-3xl font-bold">45</div>
+            <div class="text-xs uppercase tracking-widest font-bold">Minutes to Reset</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Thousands of campaigns -->
-  <section class="py-24 bg-cream relative overflow-hidden">
-    <!-- Floating Icons Background (Simplified) -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none">
-        <div class="absolute top-10 left-10 w-12 h-12 bg-black rounded-lg transform rotate-12"></div>
-        <div class="absolute top-20 right-20 w-12 h-12 bg-blue-500 rounded-lg transform -rotate-6"></div>
-        <div class="absolute bottom-20 left-1/3 w-12 h-12 bg-pink-500 rounded-lg transform rotate-45"></div>
-        <div class="absolute bottom-10 right-1/4 w-12 h-12 bg-orange-500 rounded-lg transform -rotate-12"></div>
-    </div>
-
-    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <div class="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-xs font-bold mb-6">
-            Get on Passionfroot ->
-        </div>
-        <h2 class="text-4xl md:text-6xl font-serif mb-4">Thousands of campaigns <br /> launched to date</h2>
-        <p class="text-gray-500 mb-10">with 60% lower CPC than LinkedIn Ads*</p>
-        
-        <div class="flex justify-center gap-4">
-            <Button href="#" type="primary">Get access &rarr;</Button>
-            <Button href="#" type="white">Talk to us</Button>
-        </div>
+  <!-- Intro Offer -->
+  <section class="py-20 bg-primary-500 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-serif mb-6">New to Velobeat?</h2>
+      <p class="text-xl mb-10 opacity-90">Experience the rhythm with our introductory offer. No strings attached.</p>
+      <div class="bg-white text-black p-8 rounded-3xl shadow-2xl inline-block">
+        <div class="text-sm font-bold text-primary-600 uppercase tracking-widest mb-2">Introductory Offer</div>
+        <div class="text-5xl font-serif mb-4">3 Sessions</div>
+        <div class="text-2xl font-bold mb-6">1,400₽</div>
+        <a href="#" class="bg-primary-600 text-white px-10 py-4 rounded-full font-bold hover:bg-primary-700 transition-colors inline-block">Claim Offer</a>
+      </div>
     </div>
   </section>
 
-  <!-- Payments Section (Green) -->
-  <section class="py-24 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-16">
-        Put creator payments & <br /> results on auto-pilot
-      </h2>
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-24 bg-white text-[#130b29]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-serif mb-4">Choose Your Rhythm</h2>
+        <p class="text-gray-500">Flexible packages for every fitness journey.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {#each pricing as item}
+          <div class="border border-gray-100 rounded-3xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 bg-gray-50 flex flex-col">
+            <div class="text-gray-500 text-sm font-bold uppercase mb-4">{item.sessions} Session{item.sessions > 1 ? 's' : ''}</div>
+            <div class="text-4xl font-serif mb-2">{item.price}₽</div>
+            <div class="text-xs text-gray-400 mb-8">{item.perSession}₽ per session • Valid {item.validity}</div>
+            <button class="mt-auto w-full border-2 border-[#130b29] py-3 rounded-full font-bold hover:bg-[#130b29] hover:text-white transition-all">Buy Package</button>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Left Large Card -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 md:row-span-2 flex flex-col">
-            <div class="mb-8">
-                <h3 class="text-xl font-serif mb-2">Pay quickly and safely</h3>
-                <p class="text-gray-500 text-sm">Pay one provider - not hundreds. Enjoy worldwide creator payments for seamless and secure transactions - your finance team will love you.</p>
-            </div>
-            <div class="flex-1 bg-green-50 rounded-2xl relative overflow-hidden min-h-[300px]">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-200/50 to-transparent"></div>
-                <!-- Globe/Map Abstract -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-64 h-64 border border-green-200 rounded-full opacity-50"></div>
-                    <div class="w-48 h-48 border border-green-200 rounded-full opacity-50 absolute"></div>
-                    <div class="w-96 h-96 border border-green-200 rounded-full opacity-30 absolute"></div>
-                </div>
-                <!-- Floating Avatars -->
-                <div class="absolute top-1/4 left-1/4 bg-white p-1 rounded-full shadow-lg flex items-center gap-2 pr-3 animate-bounce">
-                    <div class="w-8 h-8 bg-yellow-200 rounded-full"></div>
-                    <span class="text-xs font-bold">$500</span>
-                </div>
-                <div class="absolute bottom-1/3 right-1/4 bg-white p-1 rounded-full shadow-lg flex items-center gap-2 pr-3 animate-bounce delay-700">
-                    <div class="w-8 h-8 bg-blue-200 rounded-full"></div>
-                    <span class="text-xs font-bold">$1200</span>
-                </div>
-            </div>
+  <!-- Amenities Section -->
+  <section class="py-24 bg-gray-50 text-[#130b29]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <img src="/generated/image-interior-of-a-modern-boutique-fitness-st-1771353870412-1.webp" alt="Studio Amenities" class="rounded-3xl shadow-2xl" />
         </div>
-
-        <!-- Right Top Card -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-            <div class="flex justify-between items-start mb-4">
-                <div>
-                     <h3 class="text-xl font-serif mb-2">Measure returns effortlessly</h3>
-                     <p class="text-gray-500 text-sm">Get results reported directly in your dash so you can take the guess work out of creator marketing.</p>
-                </div>
-                <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">Tracking live</span>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-4xl font-serif mb-8">Everything You Need is Here</h2>
+          <p class="text-lg text-gray-600 mb-10">Just bring your workout clothes. We take care of the rest so you can focus on the ride.</p>
+          <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-2">
+              <h4 class="font-bold">Cycling Shoes</h4>
+              <p class="text-sm text-gray-500">Professional shoes provided for every class.</p>
             </div>
-            <div class="bg-green-50 rounded-xl h-40 flex items-end p-4 gap-2">
-                <div class="w-1/5 bg-green-300 h-[40%] rounded-t"></div>
-                <div class="w-1/5 bg-green-400 h-[60%] rounded-t"></div>
-                <div class="w-1/5 bg-green-500 h-[30%] rounded-t"></div>
-                <div class="w-1/5 bg-green-600 h-[80%] rounded-t"></div>
-                <div class="w-1/5 bg-green-700 h-[50%] rounded-t"></div>
+            <div class="space-y-2">
+              <h4 class="font-bold">Fresh Towels</h4>
+              <p class="text-sm text-gray-500">Complimentary towels for your workout and shower.</p>
             </div>
+            <div class="space-y-2">
+              <h4 class="font-bold">Full Showers</h4>
+              <p class="text-sm text-gray-500">Equipped with cosmetics and makeup removal products.</p>
+            </div>
+            <div class="space-y-2">
+              <h4 class="font-bold">Healthy Snacks</h4>
+              <p class="text-sm text-gray-500">Nutritious fuel available post-ride.</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Right Bottom Card (Testimonial) -->
-        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex gap-6 items-center">
-            <div class="w-24 h-24 bg-gray-200 rounded-full flex-shrink-0 overflow-hidden">
-                <!-- Placeholder for person -->
-                <svg class="w-full h-full text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M24 24H0V0h24v24z" fill="none"/><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+  <!-- Instructors Section -->
+  <section id="instructors" class="py-24 bg-white text-[#130b29]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div class="max-w-2xl">
+          <h2 class="text-4xl md:text-5xl font-serif mb-6">Led by the City's Most Energetic Motivators</h2>
+          <p class="text-lg text-gray-600">Our 15 instructors aren't just trainers; they're performers who drive you to push past your limits.</p>
+        </div>
+        <a href="#" class="bg-[#130b29] text-white px-8 py-4 rounded-full font-bold hover:bg-black transition-colors">Join the Team</a>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        {#each instructors as person, i}
+          <div class="group cursor-pointer">
+            <div class="aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden mb-4 relative">
+              {#if i === 0}
+                <img src="/generated/image-a-close-up-of-smiling-energetic-fitnes-1771353875137-2.webp" alt={person.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              {:else}
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">
+                  <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+              {/if}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                <p class="text-white text-xs font-bold uppercase tracking-widest">View Profile</p>
+              </div>
             </div>
+            <h4 class="font-bold text-lg">{person.name}</h4>
+            <p class="text-gray-500 text-sm">{person.role}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section class="py-24 bg-[#130b29] text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-serif mb-8">A Sense of Unity</h2>
+          <blockquote class="text-2xl font-serif italic mb-8 leading-relaxed text-primary-200">
+            "The energy of 30 people pedaling in perfect sync is indescribable. It's not just a workout; it's a collective high that carries me through the week."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary-500 flex items-center justify-center font-bold">M</div>
             <div>
-                <div class="text-green-600 text-4xl font-serif leading-none mb-2">"</div>
-                <p class="text-sm text-gray-600 italic mb-4">Passionfroot helped us streamline procurement and now automates our creator payouts globally. Our finance department loves it.</p>
-                <div class="text-xs font-bold">Julia</div>
-                <div class="text-[10px] text-gray-400">Senior Marketing Manager at Linktree</div>
+              <div class="font-bold">Maria K.</div>
+              <div class="text-gray-400 text-sm">Moscow Professional</div>
             </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="/generated/image-a-group-of-three-friends-in-their-30s-la-1771353878647-3.webp" alt="Velobeat Community" class="rounded-3xl shadow-2xl border border-white/10" />
+          <div class="absolute -top-6 -right-6 bg-white text-black p-6 rounded-2xl shadow-xl hidden md:block">
+            <div class="text-3xl font-bold">30</div>
+            <div class="text-xs uppercase tracking-widest font-bold text-gray-500">Like-minded People</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Powering People Grid -->
-  <section class="py-24 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-16 max-w-2xl mx-auto">
-        Powering the people building category-defining brands
-      </h2>
+  <!-- Locations Section -->
+  <section id="locations" class="py-24 bg-white text-[#130b29]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-serif mb-4">Find Your Studio</h2>
+        <div class="flex justify-center gap-4 mt-8">
+          <button 
+            on:click={() => activeTab = 'moscow'}
+            class="px-8 py-3 rounded-full font-bold transition-all {activeTab === 'moscow' ? 'bg-[#130b29] text-white shadow-lg' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}">
+            Moscow
+          </button>
+          <button 
+            on:click={() => activeTab = 'spb'}
+            class="px-8 py-3 rounded-full font-bold transition-all {activeTab === 'spb' ? 'bg-[#130b29] text-white shadow-lg' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}">
+            St. Petersburg
+          </button>
+        </div>
+      </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-         <!-- Row 1 -->
-         <div class="aspect-square bg-gray-200 rounded-2xl relative overflow-hidden group">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            <div class="absolute bottom-4 left-4 text-white font-bold">Gamma</div>
-            <div class="absolute bottom-4 right-4 text-white text-xl">+</div>
-         </div>
-         <div class="aspect-square bg-white rounded-2xl flex items-center justify-center border border-gray-100">
-            <span class="text-2xl font-bold flex items-center gap-2"><div class="w-6 h-6 bg-purple-500 rounded-tl-lg rounded-br-lg"></div> Figma</span>
-         </div>
-         <div class="col-span-2 bg-[#FFF9C4] rounded-2xl p-8 flex flex-col justify-between">
-            <div class="text-4xl font-serif text-yellow-600">"</div>
-            <p class="text-lg font-serif leading-relaxed">Partnering with creators through Passionfroot has been a strong growth channel. Instead of scouring the internet, their AI search enabled us to find...</p>
-            <div class="flex justify-between items-end">
-                <div class="text-xs">
-                    <div class="font-bold">John Doe</div>
-                    <div class="text-gray-500">Head of Partnerships</div>
-                </div>
-                <div class="text-xl">+</div>
+      <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
+        {#if activeTab === 'moscow'}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 class="text-3xl font-serif mb-4">Moscow Headquarters</h3>
+              <p class="text-gray-600 mb-6">Located in the heart of the city, our Fadeeva studio is where the Velobeat journey began.</p>
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <span>Ulitsa Fadeeva, 4a</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                  <span>+7 (495) 150-17-49</span>
+                </li>
+              </ul>
+              <button class="bg-primary-500 text-white px-8 py-4 rounded-full font-bold hover:bg-primary-600 transition-colors">Book a Bike in Moscow</button>
             </div>
-         </div>
-
-         <!-- Row 2 -->
-         <div class="col-span-2 bg-white rounded-2xl flex items-center justify-center border border-gray-100 p-8">
-            <span class="text-3xl font-bold text-gray-700">HubSpot</span>
-         </div>
-         <div class="aspect-square bg-gray-200 rounded-2xl relative overflow-hidden group">
-             <div class="absolute bottom-4 left-4 text-white font-bold">Munch</div>
-             <div class="absolute bottom-4 right-4 text-white text-xl">+</div>
-         </div>
-         <div class="aspect-square bg-gray-200 rounded-2xl relative overflow-hidden group">
-             <div class="absolute bottom-4 left-4 text-white font-bold">Freshbooks</div>
-             <div class="absolute bottom-4 right-4 text-white text-xl">+</div>
-         </div>
-
-         <!-- Row 3 -->
-         <div class="col-span-2 bg-[#E6F0FF] rounded-2xl p-8 flex flex-col justify-between">
-            <div class="text-4xl font-serif text-blue-600">"</div>
-            <p class="text-lg font-serif leading-relaxed">Passionfroot really helped us level up our creator program into a strong growth channel. Instead of scouring the internet...</p>
-            <div class="flex justify-between items-end">
-                <div class="text-xs">
-                    <div class="font-bold">Jane Smith</div>
-                    <div class="text-gray-500">Growth Lead</div>
-                </div>
-                <div class="text-xl">+</div>
+            <div class="h-64 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 italic">
+              Interactive Map Placeholder
             </div>
-         </div>
-         <div class="col-span-2 bg-white rounded-2xl flex items-center justify-center border border-gray-100 p-8">
-             <span class="text-2xl font-bold flex items-center gap-2"><div class="w-6 h-6 bg-black rounded"></div> Framer</span>
-         </div>
-         
-         <!-- Row 4 -->
-         <div class="aspect-square bg-gray-200 rounded-2xl relative overflow-hidden group">
-             <div class="absolute bottom-4 left-4 text-white font-bold">Replit</div>
-             <div class="absolute bottom-4 right-4 text-white text-xl">+</div>
-         </div>
-         <div class="aspect-square bg-gray-200 rounded-2xl relative overflow-hidden group">
-             <div class="absolute bottom-4 left-4 text-white font-bold">Pika</div>
-             <div class="absolute bottom-4 right-4 text-white text-xl">+</div>
-         </div>
-         <div class="col-span-2 bg-white rounded-2xl flex items-center justify-center border border-gray-100 p-8">
-             <span class="text-2xl font-bold">ElevenLabs</span>
-         </div>
+          </div>
+        {:else}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 class="text-3xl font-serif mb-4">St. Petersburg Studio</h3>
+              <p class="text-gray-600 mb-6">Bringing the rhythm to the Northern Capital. Experience our world-class facilities in a central location.</p>
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <span>Central St. Petersburg Location</span>
+                </li>
+              </ul>
+              <button class="bg-primary-500 text-white px-8 py-4 rounded-full font-bold hover:bg-primary-600 transition-colors">Book a Bike in SPB</button>
+            </div>
+            <div class="h-64 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400 italic">
+              Interactive Map Placeholder
+            </div>
+          </div>
+        {/if}
       </div>
     </div>
   </section>
 
-  <!-- Orange CTA Section -->
-  <section class="bg-orange-brand py-24 relative overflow-hidden">
-    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <h2 class="text-4xl md:text-6xl font-serif mb-8 text-dark">Let's make creators your <br /> next growth channel</h2>
-        
-        <div class="flex flex-col md:flex-row justify-center gap-6 mb-10 text-sm font-medium text-dark/80">
-            <div class="flex items-center gap-2">
-                <div class="bg-dark text-white rounded-full p-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                Get better returns on your time & money
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="bg-dark text-white rounded-full p-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                Save 70% of your time per campaign
-            </div>
-        </div>
-
-        <div class="flex justify-center gap-4">
-            <Button href="#" type="primary">Get access &rarr;</Button>
-            <Button href="#" type="white">Talk to us</Button>
-        </div>
-    </div>
-
-    <!-- Bottom Illustration (Cartoon Line) -->
-    <div class="absolute bottom-0 left-0 right-0 h-32 opacity-20 pointer-events-none flex items-end justify-center overflow-hidden">
-        <!-- Abstract representation of the cartoon line -->
-        <svg width="1200" height="100" viewBox="0 0 1200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 100 C 50 50, 100 50, 150 100" stroke="black" stroke-width="2" fill="none"/>
-            <circle cx="75" cy="80" r="10" stroke="black" stroke-width="2"/>
-            <path d="M150 100 C 200 60, 250 60, 300 100" stroke="black" stroke-width="2" fill="none"/>
-            <circle cx="225" cy="85" r="12" stroke="black" stroke-width="2"/>
-            <path d="M300 100 C 350 40, 400 40, 450 100" stroke="black" stroke-width="2" fill="none"/>
-             <circle cx="375" cy="70" r="15" stroke="black" stroke-width="2"/>
-             <!-- Repeat pattern -->
-             <path d="M450 100 C 500 50, 550 50, 600 100" stroke="black" stroke-width="2" fill="none"/>
-             <path d="M600 100 C 650 60, 700 60, 750 100" stroke="black" stroke-width="2" fill="none"/>
-             <path d="M750 100 C 800 40, 850 40, 900 100" stroke="black" stroke-width="2" fill="none"/>
-             <path d="M900 100 C 950 50, 1000 50, 1050 100" stroke="black" stroke-width="2" fill="none"/>
-             <path d="M1050 100 C 1100 60, 1150 60, 1200 100" stroke="black" stroke-width="2" fill="none"/>
-        </svg>
-    </div>
-  </section>
-
-  <!-- Case Studies -->
-  <section class="py-24 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif text-center mb-16">Case Studies</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Large Card Top -->
-        <div class="md:col-span-2 bg-[#FFCCBC] rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center gap-10">
-            <div class="flex-1">
-                <div class="text-4xl font-bold text-white mb-8">guidde.</div>
-            </div>
-            <div class="flex-1 bg-white/90 backdrop-blur rounded-2xl p-8 shadow-sm">
-                <div class="text-xs font-bold text-gray-400 uppercase mb-4">Customer Story</div>
-                <h3 class="text-2xl font-serif mb-4">How Guidde made creators a scalable growth channel with Passionfroot</h3>
-                <p class="text-gray-500 text-sm mb-6">Guidde is the generative AI platform for business that helps teams create video documentation in a matter...</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-xs text-gray-400">4 min read</span>
-                    <button class="bg-black text-white px-4 py-2 rounded-lg text-xs font-bold">Read more &rarr;</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Left -->
-        <div class="bg-[#B3E5FC] rounded-3xl p-8 flex flex-col justify-between h-96">
-            <div class="flex items-center gap-2 font-bold opacity-80 mb-8">
-                <div class="w-6 h-6 bg-black rounded"></div> INTERCOM
-            </div>
-            <div class="bg-white/90 backdrop-blur rounded-2xl p-6 shadow-sm mt-auto">
-                <div class="text-xs font-bold text-gray-400 uppercase mb-2">Customer Story</div>
-                <h3 class="text-xl font-serif mb-4">Becoming the definitive AI-first Customer Service Platform</h3>
-                <div class="flex justify-between items-center mt-4">
-                    <span class="text-xs text-gray-400">3 min read</span>
-                    <button class="bg-black text-white px-3 py-1.5 rounded-lg text-xs font-bold">Read more &rarr;</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Right -->
-        <div class="bg-[#FFCC80] rounded-3xl p-8 flex flex-col justify-between h-96">
-            <div class="flex items-center gap-2 font-bold opacity-80 mb-8 text-blue-900">
-                <div class="w-6 h-6 bg-blue-600 rounded"></div> Freshbooks
-            </div>
-            <div class="bg-white/90 backdrop-blur rounded-2xl p-6 shadow-sm mt-auto">
-                <div class="text-xs font-bold text-gray-400 uppercase mb-2">Customer Story</div>
-                <h3 class="text-xl font-serif mb-4">How Freshbooks reached 2M+ impressions with Passionfroot</h3>
-                <div class="flex justify-between items-center mt-4">
-                    <span class="text-xs text-gray-400">3 min read</span>
-                    <button class="bg-black text-white px-3 py-1.5 rounded-lg text-xs font-bold">Read more &rarr;</button>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-24 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-5xl font-serif mb-16">Frequently Asked Questions</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+  <!-- FAQ Section -->
+  <section class="py-24 bg-gray-50 text-[#130b29]">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-serif mb-16 text-center">Common Questions</h2>
+      <div class="space-y-4">
         {#each [
-            "What is Passionfroot?",
-            "What types of businesses can use Passionfroot?",
-            "How does Passionfroot work?",
-            "What platforms can I use Passionfroot for?",
-            "How do I discover the right creators for my brand?",
-            "How are payments managed?",
-            "Can I run multiple campaigns at once?",
-            "How do I get started with Passionfroot?"
-        ] as question}
-            <div class="border-b border-gray-200 py-4 flex justify-between items-center group cursor-pointer">
-                <span class="font-medium text-lg group-hover:text-orange-brand transition-colors">{question}</span>
-                <div class="w-6 h-6 rounded-full bg-dark text-white flex items-center justify-center text-sm group-hover:bg-orange-brand transition-colors">+</div>
+          { q: "Do I need prior cycling experience?", a: "Not at all! Our classes are designed for all fitness levels. Our instructors will guide you through the setup and the ride." },
+          { q: "What should I bring?", a: "Just your workout clothes. We provide cycling shoes, towels, and all shower amenities." },
+          { q: "How long is each session?", a: "Our standard sessions are 45 minutes of high-intensity cardio." },
+          { q: "Can I cancel a booking?", a: "Yes, you can cancel up to 12 hours before the class starts without losing your credit." }
+        ] as faq}
+          <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg list-none">
+              {faq.q}
+              <span class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-6 pb-6 text-gray-500 leading-relaxed">
+              {faq.a}
             </div>
+          </details>
         {/each}
       </div>
     </div>
@@ -763,21 +405,79 @@
 </div>
 
 <style>
-  /* Custom Scroll Animation */
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .mask-image-gradient {
+      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   }
-  .animate-scroll {
-    animation: scroll 20s linear infinite;
+  /* Animation keyframes */
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+          filter: blur(4px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+      }
   }
-  
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+
+  @keyframes scaleIn {
+      from {
+          opacity: 0;
+          transform: scale(0.95);
+      }
+      to {
+          opacity: 1;
+          transform: scale(1);
+      }
   }
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
+
+  @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+      50% { transform: translateY(-10px) rotate(var(--rotation)); }
+  }
+
+  .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .animate-scale-in {
+      opacity: 0;
+      animation: scaleIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .animate-float {
+      animation: float 6s ease-in-out infinite;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+
+  .bg-stars {
+      background-color: #1a0b2e;
+      background-image: 
+          radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+          radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+          radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+      background-size: 550px 550px, 350px 350px, 250px 250px;
+      background-position: 0 0, 40px 60px, 130px 270px;
+  }
+
+  .bg-gradient-overlay {
+      background: radial-gradient(circle at 50% 0%, #2d1b4e 0%, #130b29 60%, #130b29 100%);
+  }
+
+  .glow-border {
+      box-shadow: 0 0 40px -5px rgba(110, 231, 183, 0.3);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
   }
 </style>
 

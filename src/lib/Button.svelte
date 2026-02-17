@@ -1,27 +1,31 @@
 <script lang="ts">
-  export let type: 'primary' | 'secondary' | 'outline' | 'white' = 'primary';
-  export let href: string | undefined = undefined;
-  export let className = '';
+  type Props = {
+    type?: 'primary' | 'secondary' | 'outline' | 'white';
+    href?: string;
+    className?: string;
+  };
+  
+  let { type = 'primary', href, className = '' }: Props = $props();
 </script>
 
 {#if href}
   <a
     {href}
-    class="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-transform active:scale-95 {className}
-    {type === 'primary' ? 'bg-dark text-white hover:bg-gray-800' : ''}
-    {type === 'secondary' ? 'bg-orange-brand text-white hover:bg-orange-600' : ''}
-    {type === 'outline' ? 'border border-gray-300 bg-transparent hover:bg-gray-100' : ''}
-    {type === 'white' ? 'bg-white text-dark hover:bg-gray-50' : ''}"
+    class="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all active:scale-95 {className}
+    {type === 'primary' ? 'bg-primary-500 text-white hover:bg-primary-600 shadow-lg shadow-primary-500/20' : ''}
+    {type === 'secondary' ? 'bg-[#130b29] text-white hover:bg-black' : ''}
+    {type === 'outline' ? 'border border-white/20 bg-transparent text-white hover:bg-white/10' : ''}
+    {type === 'white' ? 'bg-white text-[#130b29] hover:bg-gray-100' : ''}"
   >
     <slot />
   </a>
 {:else}
   <button
-    class="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-transform active:scale-95 {className}
-    {type === 'primary' ? 'bg-dark text-white hover:bg-gray-800' : ''}
-    {type === 'secondary' ? 'bg-orange-brand text-white hover:bg-orange-600' : ''}
-    {type === 'outline' ? 'border border-gray-300 bg-transparent hover:bg-gray-100' : ''}
-    {type === 'white' ? 'bg-white text-dark hover:bg-gray-50' : ''}"
+    class="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all active:scale-95 {className}
+    {type === 'primary' ? 'bg-primary-500 text-white hover:bg-primary-600 shadow-lg shadow-primary-500/20' : ''}
+    {type === 'secondary' ? 'bg-[#130b29] text-white hover:bg-black' : ''}
+    {type === 'outline' ? 'border border-white/20 bg-transparent text-white hover:bg-white/10' : ''}
+    {type === 'white' ? 'bg-white text-[#130b29] hover:bg-gray-100' : ''}"
   >
     <slot />
   </button>
