@@ -320,12 +320,12 @@
         <h2 class="text-4xl font-serif mb-4">Find Your Studio</h2>
         <div class="flex justify-center gap-4 mt-8">
           <button 
-            on:click={() => activeTab = 'moscow'}
+            onclick={() => activeTab = 'moscow'}
             class="px-8 py-3 rounded-full font-bold transition-all {activeTab === 'moscow' ? 'bg-[#130b29] text-white shadow-lg' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}">
             Moscow
           </button>
           <button 
-            on:click={() => activeTab = 'spb'}
+            onclick={() => activeTab = 'spb'}
             class="px-8 py-3 rounded-full font-bold transition-all {activeTab === 'spb' ? 'bg-[#130b29] text-white shadow-lg' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}">
             St. Petersburg
           </button>
